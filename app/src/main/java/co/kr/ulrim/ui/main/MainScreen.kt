@@ -33,22 +33,36 @@ fun MainScreen(
     onNavigateToAdd: () -> Unit,
     viewModel: MainViewModel = hiltViewModel()
 ) {
+    val currentBackground by viewModel.currentBackground.collectAsState()
     val currentSentence by viewModel.currentSentence.collectAsState()
-
-    val galaxyGradient = androidx.compose.ui.graphics.Brush.verticalGradient(
-        colors = listOf(
-            Color(0xFF0F2027),
-            Color(0xFF203A43),
-            Color(0xFF2C5364)
-        )
-    )
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(galaxyGradient)
             .clickable { viewModel.loadRandomSentence() }
     ) {
+        // Background Image (Animated)
+        AnimatedContent(
+            targetState = currentBackground,
+            transitionSpec = { fadeIn() with fadeOut() },
+            label = "BackgroundTransition",
+            modifier = Modifier.fillMaxSize()
+        ) { background ->
+            androidx.compose.foundation.Image(
+                painter = androidx.compose.ui.res.painterResource(id = background.resourceId),
+                contentDescription = null,
+                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+
+        // Overlay
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.4f))
+        )
+
         // Content
         AnimatedContent(
             targetState = currentSentence,
@@ -68,7 +82,7 @@ fun MainScreen(
                 Text(
                     text = "Tap to find your principle.\nOr add a new one.",
                     style = MaterialTheme.typography.bodyLarge,
-                    color = Color.Gray,
+                    color = Color.White.copy(alpha = 0.8f),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(32.dp)
                 )
