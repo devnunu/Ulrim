@@ -33,11 +33,28 @@ fun UlrimApp() {
     NavHost(navController = navController, startDestination = "main") {
         composable("main") {
             MainScreen(
-                onNavigateToAdd = { navController.navigate("add") }
+                onNavigateToAdd = { navController.navigate("add") },
+                onNavigateToList = { navController.navigate("list") }
             )
         }
         composable("add") {
             AddSentenceScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        composable("list") {
+            co.kr.ulrim.ui.list.SentenceListScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToDetail = { sentenceId ->
+                    navController.navigate("detail/$sentenceId")
+                }
+            )
+        }
+        composable(
+            route = "detail/{sentenceId}",
+            arguments = listOf(androidx.navigation.navArgument("sentenceId") { type = androidx.navigation.NavType.LongType })
+        ) {
+            co.kr.ulrim.ui.detail.SentenceDetailScreen(
                 onNavigateBack = { navController.popBackStack() }
             )
         }

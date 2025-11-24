@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +32,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 @Composable
 fun MainScreen(
     onNavigateToAdd: () -> Unit,
+    onNavigateToList: () -> Unit,
     viewModel: MainViewModel = hiltViewModel()
 ) {
     val currentBackground by viewModel.currentBackground.collectAsState()
@@ -87,6 +89,22 @@ fun MainScreen(
                     modifier = Modifier.padding(32.dp)
                 )
             }
+        }
+
+        // List Button
+        IconButton(
+            onClick = onNavigateToList,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(24.dp)
+                .padding(top = 24.dp) // Extra padding for status bar
+        ) {
+            Icon(
+                imageVector = Icons.Default.List,
+                contentDescription = "List",
+                tint = Color.White.copy(alpha = 0.7f),
+                modifier = Modifier.size(24.dp)
+            )
         }
 
         // Add Button (Subtle)

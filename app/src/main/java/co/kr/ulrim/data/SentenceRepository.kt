@@ -16,7 +16,15 @@ class SentenceRepository @Inject constructor(
         sentenceDao.insert(sentence)
     }
 
+    suspend fun update(sentence: Sentence) {
+        sentenceDao.update(sentence)
+    }
+
     suspend fun delete(sentence: Sentence) {
         sentenceDao.delete(sentence)
+    }
+
+    suspend fun getById(id: Long): Sentence? {
+        return sentenceDao.getById(id)
     }
 }

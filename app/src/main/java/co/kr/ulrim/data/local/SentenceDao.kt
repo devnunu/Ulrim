@@ -17,6 +17,12 @@ interface SentenceDao {
     @Insert
     suspend fun insert(sentence: Sentence)
 
+    @androidx.room.Update
+    suspend fun update(sentence: Sentence)
+
     @Delete
     suspend fun delete(sentence: Sentence)
+
+    @Query("SELECT * FROM sentences WHERE id = :id")
+    suspend fun getById(id: Long): Sentence?
 }
