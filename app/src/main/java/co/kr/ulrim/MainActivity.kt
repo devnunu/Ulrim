@@ -34,7 +34,13 @@ fun UlrimApp() {
         composable("main") {
             MainScreen(
                 onNavigateToAdd = { navController.navigate("add") },
-                onNavigateToList = { navController.navigate("list") }
+                onNavigateToList = { navController.navigate("list") },
+                onNavigateToSettings = { navController.navigate("settings") }
+            )
+        }
+        composable("settings") {
+            co.kr.ulrim.ui.settings.SettingsScreen(
+                onNavigateBack = { navController.popBackStack() }
             )
         }
         composable("add") {
