@@ -24,11 +24,15 @@ import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 import co.kr.ulrim.MainActivity
+import co.kr.ulrim.data.SentenceRepository
+import co.kr.ulrim.data.SettingsRepository
 import co.kr.ulrim.domain.DailyQuoteManager
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 
 class UlrimWidget : GlanceAppWidget() {
@@ -37,17 +41,33 @@ class UlrimWidget : GlanceAppWidget() {
     @InstallIn(SingletonComponent::class)
     interface UlrimWidgetEntryPoint {
         fun dailyQuoteManager(): DailyQuoteManager
+        fun sentenceRepository(): SentenceRepository
+        fun settingsRepository(): SettingsRepository
     }
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val appContext = context.applicationContext
-        val dailyQuoteManager = EntryPointAccessors.fromApplication(
+        val entryPoint = EntryPointAccessors.fromApplication(
             appContext,
             UlrimWidgetEntryPoint::class.java
-        ).dailyQuoteManager()
+        )
 
-        // Fetch quote synchronously for widget provider
-        val quote = runBlocking { dailyQuoteManager.getOrUpdateTodayQuote() }
+        val dailyQuoteManager = entryPoint.dailyQuoteManager()
+        val sentenceRepository = entryPoint.sentenceRepository()
+        val settingsRepository = entryPoint.settingsRepository()
+
+        // Fetch widget mode
+        val widgetMode = runBlocking { 
+            settingsRepository.userPreferences.first().widgetMode
+        }
+
+        // Fetch quote based on mode
+        val quote = runBlocking {
+            when (widgetMode) {
+                "random" -> sentenceRepository.getRandomSentence().firstOrNull()
+                else -> dailyQuoteManager.getOrUpdateTodayQuote()
+            }
+        }
 
         provideContent {
             UlrimWidgetContent(quote?.content ?: "Tap to find your principle.")

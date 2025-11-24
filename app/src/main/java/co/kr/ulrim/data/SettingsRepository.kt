@@ -18,7 +18,8 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 data class UserPreferences(
     val fontSize: Int = 1, // 0: Small, 1: Medium, 2: Large
     val isAnimationOn: Boolean = true,
-    val isBackgroundOn: Boolean = true
+    val isBackgroundOn: Boolean = true,
+    val widgetMode: String = "daily" // "daily" or "random"
 )
 
 @Singleton
@@ -33,6 +34,7 @@ class SettingsRepository @Inject constructor(
         val BACKGROUND_ON = booleanPreferencesKey("background_on")
         val TODAY_DATE = androidx.datastore.preferences.core.stringPreferencesKey("today_date")
         val TODAY_QUOTE_ID = androidx.datastore.preferences.core.longPreferencesKey("today_quote_id")
+        val WIDGET_MODE = androidx.datastore.preferences.core.stringPreferencesKey("widget_mode")
     }
 
     val userPreferences: Flow<UserPreferences> = dataStore.data
@@ -40,7 +42,8 @@ class SettingsRepository @Inject constructor(
             UserPreferences(
                 fontSize = preferences[Keys.FONT_SIZE] ?: 1,
                 isAnimationOn = preferences[Keys.ANIMATION_ON] ?: true,
-                isBackgroundOn = preferences[Keys.BACKGROUND_ON] ?: true
+                isBackgroundOn = preferences[Keys.BACKGROUND_ON] ?: true,
+                widgetMode = preferences[Keys.WIDGET_MODE] ?: "daily"
             )
         }
 
@@ -64,6 +67,12 @@ class SettingsRepository @Inject constructor(
     suspend fun setBackgroundOn(isOn: Boolean) {
         dataStore.edit { preferences ->
             preferences[Keys.BACKGROUND_ON] = isOn
+        }
+    }
+
+    suspend fun setWidgetMode(mode: String) {
+        dataStore.edit { preferences ->
+            preferences[Keys.WIDGET_MODE] = mode
         }
     }
 

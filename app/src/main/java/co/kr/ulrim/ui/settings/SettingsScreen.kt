@@ -109,8 +109,63 @@ fun SettingsScreen(
                     isChecked = userPreferences!!.isBackgroundOn,
                     onCheckedChange = { viewModel.setBackgroundOn(it) }
                 )
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                // Widget Section
+                SettingsSectionTitle("Widget")
+                WidgetModeSelector(
+                    selectedMode = userPreferences!!.widgetMode,
+                    onModeSelected = { viewModel.setWidgetMode(it) }
+                )
             }
         }
+    }
+}
+
+@Composable
+fun WidgetModeSelector(
+    selectedMode: String,
+    onModeSelected: (String) -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .background(Color.DarkGray.copy(alpha = 0.5f)),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        WidgetModeOption(
+            label = "Daily Quote",
+            isSelected = selectedMode == "daily",
+            onClick = { onModeSelected("daily") }
+        )
+        WidgetModeOption(
+            label = "Random Quote",
+            isSelected = selectedMode == "random",
+            onClick = { onModeSelected("random") }
+        )
+    }
+}
+
+@Composable
+fun WidgetModeOption(
+    label: String,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .clickable(onClick = onClick)
+            .padding(vertical = 12.dp, horizontal = 16.dp)
+            .background(if (isSelected) Color.White.copy(alpha = 0.2f) else Color.Transparent, RoundedCornerShape(8.dp))
+    ) {
+        Text(
+            text = label,
+            color = if (isSelected) Color.White else Color.Gray,
+            style = MaterialTheme.typography.bodyMedium
+        )
     }
 }
 

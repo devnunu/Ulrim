@@ -1,9 +1,13 @@
 package co.kr.ulrim.ui.settings
 
+import android.content.Context
+import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.kr.ulrim.data.SettingsRepository
+import co.kr.ulrim.ui.widget.UlrimWidget
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -11,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    private val repository: SettingsRepository
+    private val repository: SettingsRepository,
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     val userPreferences = repository.userPreferences
@@ -36,6 +41,17 @@ class SettingsViewModel @Inject constructor(
     fun setBackgroundOn(isOn: Boolean) {
         viewModelScope.launch {
             repository.setBackgroundOn(isOn)
+        }
+    }
+
+    fun setWidgetMode(mode: String) {
+        viewModelScope.launch {
+            repository.setWidgetMode(mode)
+            // Trigger Widget Update
+            val glanceId = GlanceAppWidgetManager(context).getGlanceIds(UlrimWidget::class.java).firstOrNull()
+            if (glanceId != null) {
+                UlrimWidget().update(context, glanceId)
+            }
         }
     }
 }
