@@ -30,7 +30,16 @@ class MainActivity : ComponentActivity() {
 fun UlrimApp() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "main") {
+    NavHost(navController = navController, startDestination = "splash") {
+        composable("splash") {
+            co.kr.ulrim.ui.splash.SplashScreen(
+                onNavigateToMain = {
+                    navController.navigate("main") {
+                        popUpTo("splash") { inclusive = true }
+                    }
+                }
+            )
+        }
         composable("main") {
             MainScreen(
                 onNavigateToAdd = { navController.navigate("add") },
