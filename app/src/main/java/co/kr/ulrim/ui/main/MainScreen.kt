@@ -14,13 +14,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,6 +32,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -166,6 +172,36 @@ fun MainScreen(
             )
         }
 
+        // Share Button
+        var showShareDialog by remember { mutableStateOf(false) }
+        IconButton(
+            onClick = { showShareDialog = true },
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(start = 72.dp, top = 48.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Share,
+                contentDescription = "Share",
+                tint = Color.White.copy(alpha = 0.7f),
+                modifier = Modifier.size(24.dp)
+            )
+        }
+
+        if (showShareDialog) {
+            ShareActionSheet(
+                onDismiss = { showShareDialog = false },
+                onShareText = {
+                    viewModel.shareAsText()
+                    showShareDialog = false
+                },
+                onShareImage = {
+                    viewModel.shareAsImage()
+                    showShareDialog = false
+                }
+            )
+        }
+
         // List Button
         IconButton(
             onClick = onNavigateToList,
@@ -198,4 +234,38 @@ fun MainScreen(
         }
     }
     }
+}
+
+@Composable
+fun ShareActionSheet(
+    onDismiss: () -> Unit,
+    onShareText: () -> Unit,
+    onShareImage: () -> Unit
+) {
+    androidx.compose.material3.AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Share Quote", color = Color.White) },
+        text = {
+            Column {
+                androidx.compose.material3.TextButton(
+                    onClick = onShareText,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Share as Text", color = Color.White)
+                }
+                androidx.compose.material3.TextButton(
+                    onClick = onShareImage,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Share as Image", color = Color.White)
+                }
+            }
+        },
+        confirmButton = {
+            androidx.compose.material3.TextButton(onClick = onDismiss) {
+                Text("Cancel", color = Color.White)
+            }
+        },
+        containerColor = Color.DarkGray
+    )
 }

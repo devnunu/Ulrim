@@ -1,6 +1,9 @@
 package co.kr.ulrim.ui.main
 
 import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import androidx.core.content.FileProvider
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,6 +14,7 @@ import co.kr.ulrim.data.local.Backgrounds
 import co.kr.ulrim.data.local.Sentence
 import co.kr.ulrim.domain.DailyQuoteManager
 import co.kr.ulrim.ui.widget.UlrimWidget
+import co.kr.ulrim.util.ShareCardGenerator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +24,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
 import javax.inject.Inject
 
 @HiltViewModel
@@ -63,6 +69,50 @@ class MainViewModel @Inject constructor(
             val glanceId = GlanceAppWidgetManager(context).getGlanceIds(UlrimWidget::class.java).firstOrNull()
             if (glanceId != null) {
                 UlrimWidget().update(context, glanceId)
+            }
+        }
+    }
+
+    fun shareAsText() {
+        val sentence = _currentSentence.value?.content ?: return
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, sentence)
+        }
+        val chooserIntent = Intent.createChooser(shareIntent, "Share Quote")
+        chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(chooserIntent)
+    }
+
+    fun shareAsImage() {
+        viewModelScope.launch {
+            val sentence = _currentSentence.value?.content ?: return@launch
+            val backgroundResId = _currentBackground.value.resourceId
+
+            // Generate card bitmap
+            val bitmap = ShareCardGenerator.generateQuoteCard(context, sentence, backgroundResId)
+
+            // Save to cache and share
+            try {
+                val cachePath = File(context.cacheDir, "images")
+                cachePath.mkdirs()
+                val file = File(cachePath, "quote_card.png")
+                val stream = FileOutputStream(file)
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+                stream.close()
+
+                val contentUri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+
+                val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                    type = "image/png"
+                    putExtra(Intent.EXTRA_STREAM, contentUri)
+                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }
+                val chooserIntent = Intent.createChooser(shareIntent, "Share Quote Card")
+                chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(chooserIntent)
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
