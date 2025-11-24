@@ -31,6 +31,8 @@ class SettingsRepository @Inject constructor(
         val FONT_SIZE = intPreferencesKey("font_size")
         val ANIMATION_ON = booleanPreferencesKey("animation_on")
         val BACKGROUND_ON = booleanPreferencesKey("background_on")
+        val TODAY_DATE = androidx.datastore.preferences.core.stringPreferencesKey("today_date")
+        val TODAY_QUOTE_ID = androidx.datastore.preferences.core.longPreferencesKey("today_quote_id")
     }
 
     val userPreferences: Flow<UserPreferences> = dataStore.data
@@ -40,6 +42,11 @@ class SettingsRepository @Inject constructor(
                 isAnimationOn = preferences[Keys.ANIMATION_ON] ?: true,
                 isBackgroundOn = preferences[Keys.BACKGROUND_ON] ?: true
             )
+        }
+
+    val todayQuoteData: Flow<Pair<String?, Long?>> = dataStore.data
+        .map { preferences ->
+            Pair(preferences[Keys.TODAY_DATE], preferences[Keys.TODAY_QUOTE_ID])
         }
 
     suspend fun setFontSize(size: Int) {
@@ -57,6 +64,13 @@ class SettingsRepository @Inject constructor(
     suspend fun setBackgroundOn(isOn: Boolean) {
         dataStore.edit { preferences ->
             preferences[Keys.BACKGROUND_ON] = isOn
+        }
+    }
+
+    suspend fun setTodayQuote(date: String, quoteId: Long) {
+        dataStore.edit { preferences ->
+            preferences[Keys.TODAY_DATE] = date
+            preferences[Keys.TODAY_QUOTE_ID] = quoteId
         }
     }
 }
