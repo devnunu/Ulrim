@@ -17,7 +17,7 @@ class DailyQuoteManager @Inject constructor(
     private val settingsRepository: SettingsRepository
 ) {
 
-    suspend fun getOrUpdateTodayQuote(): Sentence? {
+    suspend fun getOrUpdateTodayQuote(sourceFilter: String = "both"): Sentence? {
         val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         val (savedDate, savedQuoteId) = settingsRepository.todayQuoteData.first()
 
@@ -29,7 +29,7 @@ class DailyQuoteManager @Inject constructor(
         }
 
         // Need new quote
-        val randomSentence = sentenceRepository.getRandomSentence().firstOrNull() ?: return null
+        val randomSentence = sentenceRepository.getRandomSentenceBySource(sourceFilter).firstOrNull() ?: return null
         
         settingsRepository.setTodayQuote(todayDate, randomSentence.id)
         return randomSentence

@@ -56,7 +56,8 @@ class MainViewModel @Inject constructor(
 
     fun loadRandomSentence() {
         viewModelScope.launch {
-             val sentence = repository.getRandomSentence().first()
+             val sourceFilter = userPreferences.value?.quoteSource ?: "both"
+             val sentence = repository.getRandomSentenceBySource(sourceFilter).first()
              _currentSentence.value = sentence
              _currentBackground.value = Backgrounds.list.random()
         }

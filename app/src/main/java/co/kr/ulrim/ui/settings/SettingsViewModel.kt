@@ -54,4 +54,21 @@ class SettingsViewModel @Inject constructor(
             }
         }
     }
+
+    fun setQuoteSource(source: String) {
+        viewModelScope.launch {
+            repository.setQuoteSource(source)
+        }
+    }
+
+    fun setWidgetQuoteSource(source: String) {
+        viewModelScope.launch {
+            repository.setWidgetQuoteSource(source)
+            // Trigger Widget Update
+            val glanceId = GlanceAppWidgetManager(context).getGlanceIds(UlrimWidget::class.java).firstOrNull()
+            if (glanceId != null) {
+                UlrimWidget().update(context, glanceId)
+            }
+        }
+    }
 }

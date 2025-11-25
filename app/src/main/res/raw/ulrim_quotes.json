@@ -1,0 +1,2105 @@
+{
+  "version": 1,
+  "quotes": [
+    {
+      "id": "q001",
+      "text": "Choose kindness, even when no one is watching.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q002",
+      "text": "Courage is choosing action while fear is still in the room.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q003",
+      "text": "What you repeat every day quietly shapes your life.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q004",
+      "text": "Patience is trust stretched over time.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q005",
+      "text": "Growth often feels like breaking before rebuilding.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q006",
+      "text": "Discipline is remembering what you want most.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q007",
+      "text": "Simplicity reveals what truly matters.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q008",
+      "text": "Be fully where your feet are.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q009",
+      "text": "Gratitude turns sufficiency into abundance.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q010",
+      "text": "Failure is feedback, not a final verdict.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q011",
+      "text": "How you spend an hour is how you spend a life.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q012",
+      "text": "Every choice is a small vote for your future self.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q013",
+      "text": "Integrity is doing the hard right over the easy wrong.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q014",
+      "text": "Rest is not a reward; it is maintenance.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q015",
+      "text": "Stay a student even when you start to teach.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q016",
+      "text": "Comparison blinds you to your own path.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q017",
+      "text": "Resilience is built on tiny comebacks.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q018",
+      "text": "Be honest first with yourself, then with others.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q019",
+      "text": "Your habits are promises you keep with yourself.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q020",
+      "text": "Fear is loud; truth is usually quiet.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q021",
+      "text": "Small changes compound into big turning points.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q022",
+      "text": "Take ownership where you once placed blame.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q023",
+      "text": "Boundaries protect what you say matters.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q024",
+      "text": "Listen to understand, not to reload.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q025",
+      "text": "Love grows where attention goes.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q026",
+      "text": "Clarity often comes after action, not before.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q027",
+      "text": "Learn to walk with uncertainty, not escape it.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q028",
+      "text": "You are not your thoughts; you are the one noticing them.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q029",
+      "text": "Envy shows you what you secretly desire to build.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q030",
+      "text": "Change the angle and the problem changes shape.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q031",
+      "text": "Consistency beats intensity over the long run.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q032",
+      "text": "Doubt questions you; discipline answers back.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q033",
+      "text": "Not choosing is also a risky choice.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q034",
+      "text": "Protect your focus like something expensive.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q035",
+      "text": "Begin the day counting what stayed, not what left.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q036",
+      "text": "Work with your future self as a teammate, not a stranger.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q037",
+      "text": "Character is who you are when no benefit is in sight.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q038",
+      "text": "Silence is often the best room for thinking.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q039",
+      "text": "Be patient with the process, urgent with the effort.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q040",
+      "text": "Let failures be chapters, not your title.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q041",
+      "text": "Allow yourself small joys without earning them.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q042",
+      "text": "Curiosity ages better than certainty.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q043",
+      "text": "Where your attention settles, your life follows.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q044",
+      "text": "Act today so future you has fewer apologies to make.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q045",
+      "text": "Trust is built in ordinary, repeated moments.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q046",
+      "text": "Change your defaults, change your direction.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q047",
+      "text": "Being kind to yourself is not a luxury, it is fuel.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q048",
+      "text": "Courage often looks like a single honest conversation.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q049",
+      "text": "When you say no, you protect deeper yeses.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q050",
+      "text": "Do one thing at a time like it matters.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q051",
+      "text": "Leave some things unfinished so you can finish what matters.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q052",
+      "text": "Let go of what you carry but do not need.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q053",
+      "text": "Aim for progress, not perfection.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q054",
+      "text": "You teach others how to treat you by how you treat yourself.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q055",
+      "text": "Say what you mean without trying to be mean.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q056",
+      "text": "Feelings ask to be felt, not fixed.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q057",
+      "text": "Grow at your pace, not at their timeline.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q058",
+      "text": "Mistakes are proof you were moving, not frozen.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q059",
+      "text": "In a noisy world, attention is your rarest asset.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q060",
+      "text": "Show up especially on the days you do not feel like it.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q061",
+      "text": "Meaning is built, not found.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q062",
+      "text": "Gratitude makes the present big enough.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q063",
+      "text": "You can outgrow failures that once defined you.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q064",
+      "text": "Let your values, not your moods, steer your day.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q065",
+      "text": "Slow progress is still real progress.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q066",
+      "text": "If nothing changes, nothing changes.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q067",
+      "text": "Responsibility is the price of real freedom.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q068",
+      "text": "Notice the moment before it becomes a memory.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q069",
+      "text": "Ask better questions to live better answers.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q070",
+      "text": "Do the small brave thing that is in front of you.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q071",
+      "text": "Schedule your priorities, not just your tasks.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q072",
+      "text": "Treat relationships as gardens, not trophies.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q073",
+      "text": "Speak to yourself as you would to a dear friend.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q074",
+      "text": "Do not rush what needs time to grow roots.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q075",
+      "text": "Close more tabs in your mind than in your browser.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q076",
+      "text": "Rest so you can return, not escape.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q077",
+      "text": "When in doubt, choose according to your values.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q078",
+      "text": "Decisions are where your life quietly turns.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q079",
+      "text": "Let your ego shrink so your life can grow.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q080",
+      "text": "Hope is a discipline, not just a feeling.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q081",
+      "text": "If everything is important, nothing truly is.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q082",
+      "text": "Stack small good habits where bad ones used to live.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q083",
+      "text": "Write it down to see it clearly.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q084",
+      "text": "Thank the past, but do not live there.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q085",
+      "text": "Attention is the purest form of generosity.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q086",
+      "text": "Adapt without abandoning who you are.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q087",
+      "text": "Fail forward, but also pause to learn.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q088",
+      "text": "Kindness is a language fear does not speak.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q089",
+      "text": "Strength is often quiet persistence.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q090",
+      "text": "A boundary is love with a shape.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q091",
+      "text": "Direction matters more than speed.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q092",
+      "text": "Be willing to be a beginner again.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q093",
+      "text": "Every new habit is a small revolution.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q094",
+      "text": "Act like the person you want to become.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q095",
+      "text": "Courage is choosing aligned discomfort over easy regret.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q096",
+      "text": "Rest your mind so your thoughts can breathe.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q097",
+      "text": "Arrive before you start doing.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q098",
+      "text": "Collect moments, not just milestones.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q099",
+      "text": "Self-care is how you prove to yourself that you matter.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q100",
+      "text": "Say no more often so your yes means something.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q101",
+      "text": "Hold a clear vision, but hold your plans loosely.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q102",
+      "text": "Curiosity opens doors certainty keeps closed.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q103",
+      "text": "Do the work when inspiration is absent.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q104",
+      "text": "Trust the timing you cannot yet understand.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q105",
+      "text": "Talk to yourself like life is still possible.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q106",
+      "text": "Choose kindness, even when no one is watching. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q107",
+      "text": "Courage is choosing action while fear is still in the room. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q108",
+      "text": "What you repeat every day quietly shapes your life. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q109",
+      "text": "Patience is trust stretched over time. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q110",
+      "text": "Growth often feels like breaking before rebuilding. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q111",
+      "text": "Discipline is remembering what you want most. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q112",
+      "text": "Simplicity reveals what truly matters. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q113",
+      "text": "Be fully where your feet are. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q114",
+      "text": "Gratitude turns sufficiency into abundance. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q115",
+      "text": "Failure is feedback, not a final verdict. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q116",
+      "text": "How you spend an hour is how you spend a life. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q117",
+      "text": "Every choice is a small vote for your future self. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q118",
+      "text": "Integrity is doing the hard right over the easy wrong. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q119",
+      "text": "Rest is not a reward; it is maintenance. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q120",
+      "text": "Stay a student even when you start to teach. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q121",
+      "text": "Comparison blinds you to your own path. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q122",
+      "text": "Resilience is built on tiny comebacks. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q123",
+      "text": "Be honest first with yourself, then with others. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q124",
+      "text": "Your habits are promises you keep with yourself. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q125",
+      "text": "Fear is loud; truth is usually quiet. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q126",
+      "text": "Small changes compound into big turning points. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q127",
+      "text": "Take ownership where you once placed blame. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q128",
+      "text": "Boundaries protect what you say matters. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q129",
+      "text": "Listen to understand, not to reload. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q130",
+      "text": "Love grows where attention goes. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q131",
+      "text": "Clarity often comes after action, not before. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q132",
+      "text": "Learn to walk with uncertainty, not escape it. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q133",
+      "text": "You are not your thoughts; you are the one noticing them. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q134",
+      "text": "Envy shows you what you secretly desire to build. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q135",
+      "text": "Change the angle and the problem changes shape. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q136",
+      "text": "Consistency beats intensity over the long run. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q137",
+      "text": "Doubt questions you; discipline answers back. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q138",
+      "text": "Not choosing is also a risky choice. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q139",
+      "text": "Protect your focus like something expensive. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q140",
+      "text": "Begin the day counting what stayed, not what left. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q141",
+      "text": "Work with your future self as a teammate, not a stranger. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q142",
+      "text": "Character is who you are when no benefit is in sight. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q143",
+      "text": "Silence is often the best room for thinking. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q144",
+      "text": "Be patient with the process, urgent with the effort. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q145",
+      "text": "Let failures be chapters, not your title. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q146",
+      "text": "Allow yourself small joys without earning them. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q147",
+      "text": "Curiosity ages better than certainty. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q148",
+      "text": "Where your attention settles, your life follows. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q149",
+      "text": "Act today so future you has fewer apologies to make. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q150",
+      "text": "Trust is built in ordinary, repeated moments. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q151",
+      "text": "Change your defaults, change your direction. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q152",
+      "text": "Being kind to yourself is not a luxury, it is fuel. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q153",
+      "text": "Courage often looks like a single honest conversation. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q154",
+      "text": "When you say no, you protect deeper yeses. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q155",
+      "text": "Do one thing at a time like it matters. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q156",
+      "text": "Leave some things unfinished so you can finish what matters. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q157",
+      "text": "Let go of what you carry but do not need. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q158",
+      "text": "Aim for progress, not perfection. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q159",
+      "text": "You teach others how to treat you by how you treat yourself. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q160",
+      "text": "Say what you mean without trying to be mean. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q161",
+      "text": "Feelings ask to be felt, not fixed. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q162",
+      "text": "Grow at your pace, not at their timeline. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q163",
+      "text": "Mistakes are proof you were moving, not frozen. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q164",
+      "text": "In a noisy world, attention is your rarest asset. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q165",
+      "text": "Show up especially on the days you do not feel like it. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q166",
+      "text": "Meaning is built, not found. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q167",
+      "text": "Gratitude makes the present big enough. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q168",
+      "text": "You can outgrow failures that once defined you. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q169",
+      "text": "Let your values, not your moods, steer your day. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q170",
+      "text": "Slow progress is still real progress. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q171",
+      "text": "If nothing changes, nothing changes. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q172",
+      "text": "Responsibility is the price of real freedom. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q173",
+      "text": "Notice the moment before it becomes a memory. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q174",
+      "text": "Ask better questions to live better answers. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q175",
+      "text": "Do the small brave thing that is in front of you. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q176",
+      "text": "Schedule your priorities, not just your tasks. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q177",
+      "text": "Treat relationships as gardens, not trophies. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q178",
+      "text": "Speak to yourself as you would to a dear friend. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q179",
+      "text": "Do not rush what needs time to grow roots. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q180",
+      "text": "Close more tabs in your mind than in your browser. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q181",
+      "text": "Rest so you can return, not escape. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q182",
+      "text": "When in doubt, choose according to your values. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q183",
+      "text": "Decisions are where your life quietly turns. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q184",
+      "text": "Let your ego shrink so your life can grow. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q185",
+      "text": "Hope is a discipline, not just a feeling. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q186",
+      "text": "If everything is important, nothing truly is. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q187",
+      "text": "Stack small good habits where bad ones used to live. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q188",
+      "text": "Write it down to see it clearly. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q189",
+      "text": "Thank the past, but do not live there. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q190",
+      "text": "Attention is the purest form of generosity. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q191",
+      "text": "Adapt without abandoning who you are. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q192",
+      "text": "Fail forward, but also pause to learn. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q193",
+      "text": "Kindness is a language fear does not speak. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q194",
+      "text": "Strength is often quiet persistence. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q195",
+      "text": "A boundary is love with a shape. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q196",
+      "text": "Direction matters more than speed. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q197",
+      "text": "Be willing to be a beginner again. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q198",
+      "text": "Every new habit is a small revolution. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q199",
+      "text": "Act like the person you want to become. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q200",
+      "text": "Courage is choosing aligned discomfort over easy regret. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q201",
+      "text": "Rest your mind so your thoughts can breathe. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q202",
+      "text": "Arrive before you start doing. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q203",
+      "text": "Collect moments, not just milestones. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q204",
+      "text": "Self-care is how you prove to yourself that you matter. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q205",
+      "text": "Say no more often so your yes means something. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q206",
+      "text": "Hold a clear vision, but hold your plans loosely. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q207",
+      "text": "Curiosity opens doors certainty keeps closed. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q208",
+      "text": "Do the work when inspiration is absent. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q209",
+      "text": "Trust the timing you cannot yet understand. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q210",
+      "text": "Talk to yourself like life is still possible. Today, practice it on purpose.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q211",
+      "text": "Choose kindness, even when no one is watching. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q212",
+      "text": "Courage is choosing action while fear is still in the room. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q213",
+      "text": "What you repeat every day quietly shapes your life. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q214",
+      "text": "Patience is trust stretched over time. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q215",
+      "text": "Growth often feels like breaking before rebuilding. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q216",
+      "text": "Discipline is remembering what you want most. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q217",
+      "text": "Simplicity reveals what truly matters. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q218",
+      "text": "Be fully where your feet are. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q219",
+      "text": "Gratitude turns sufficiency into abundance. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q220",
+      "text": "Failure is feedback, not a final verdict. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q221",
+      "text": "How you spend an hour is how you spend a life. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q222",
+      "text": "Every choice is a small vote for your future self. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q223",
+      "text": "Integrity is doing the hard right over the easy wrong. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q224",
+      "text": "Rest is not a reward; it is maintenance. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q225",
+      "text": "Stay a student even when you start to teach. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q226",
+      "text": "Comparison blinds you to your own path. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q227",
+      "text": "Resilience is built on tiny comebacks. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q228",
+      "text": "Be honest first with yourself, then with others. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q229",
+      "text": "Your habits are promises you keep with yourself. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q230",
+      "text": "Fear is loud; truth is usually quiet. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q231",
+      "text": "Small changes compound into big turning points. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q232",
+      "text": "Take ownership where you once placed blame. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q233",
+      "text": "Boundaries protect what you say matters. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q234",
+      "text": "Listen to understand, not to reload. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q235",
+      "text": "Love grows where attention goes. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q236",
+      "text": "Clarity often comes after action, not before. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q237",
+      "text": "Learn to walk with uncertainty, not escape it. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q238",
+      "text": "You are not your thoughts; you are the one noticing them. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q239",
+      "text": "Envy shows you what you secretly desire to build. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q240",
+      "text": "Change the angle and the problem changes shape. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q241",
+      "text": "Consistency beats intensity over the long run. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q242",
+      "text": "Doubt questions you; discipline answers back. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q243",
+      "text": "Not choosing is also a risky choice. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q244",
+      "text": "Protect your focus like something expensive. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q245",
+      "text": "Begin the day counting what stayed, not what left. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q246",
+      "text": "Work with your future self as a teammate, not a stranger. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q247",
+      "text": "Character is who you are when no benefit is in sight. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q248",
+      "text": "Silence is often the best room for thinking. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q249",
+      "text": "Be patient with the process, urgent with the effort. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q250",
+      "text": "Let failures be chapters, not your title. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q251",
+      "text": "Allow yourself small joys without earning them. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q252",
+      "text": "Curiosity ages better than certainty. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q253",
+      "text": "Where your attention settles, your life follows. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q254",
+      "text": "Act today so future you has fewer apologies to make. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q255",
+      "text": "Trust is built in ordinary, repeated moments. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q256",
+      "text": "Change your defaults, change your direction. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q257",
+      "text": "Being kind to yourself is not a luxury, it is fuel. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q258",
+      "text": "Courage often looks like a single honest conversation. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q259",
+      "text": "When you say no, you protect deeper yeses. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q260",
+      "text": "Do one thing at a time like it matters. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q261",
+      "text": "Leave some things unfinished so you can finish what matters. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q262",
+      "text": "Let go of what you carry but do not need. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q263",
+      "text": "Aim for progress, not perfection. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q264",
+      "text": "You teach others how to treat you by how you treat yourself. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q265",
+      "text": "Say what you mean without trying to be mean. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q266",
+      "text": "Feelings ask to be felt, not fixed. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q267",
+      "text": "Grow at your pace, not at their timeline. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q268",
+      "text": "Mistakes are proof you were moving, not frozen. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q269",
+      "text": "In a noisy world, attention is your rarest asset. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q270",
+      "text": "Show up especially on the days you do not feel like it. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q271",
+      "text": "Meaning is built, not found. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q272",
+      "text": "Gratitude makes the present big enough. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q273",
+      "text": "You can outgrow failures that once defined you. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q274",
+      "text": "Let your values, not your moods, steer your day. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q275",
+      "text": "Slow progress is still real progress. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q276",
+      "text": "If nothing changes, nothing changes. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q277",
+      "text": "Responsibility is the price of real freedom. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q278",
+      "text": "Notice the moment before it becomes a memory. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q279",
+      "text": "Ask better questions to live better answers. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q280",
+      "text": "Do the small brave thing that is in front of you. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q281",
+      "text": "Schedule your priorities, not just your tasks. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q282",
+      "text": "Treat relationships as gardens, not trophies. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q283",
+      "text": "Speak to yourself as you would to a dear friend. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q284",
+      "text": "Do not rush what needs time to grow roots. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q285",
+      "text": "Close more tabs in your mind than in your browser. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q286",
+      "text": "Rest so you can return, not escape. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q287",
+      "text": "When in doubt, choose according to your values. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q288",
+      "text": "Decisions are where your life quietly turns. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q289",
+      "text": "Let your ego shrink so your life can grow. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q290",
+      "text": "Hope is a discipline, not just a feeling. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q291",
+      "text": "If everything is important, nothing truly is. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q292",
+      "text": "Stack small good habits where bad ones used to live. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q293",
+      "text": "Write it down to see it clearly. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q294",
+      "text": "Thank the past, but do not live there. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q295",
+      "text": "Attention is the purest form of generosity. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q296",
+      "text": "Adapt without abandoning who you are. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q297",
+      "text": "Fail forward, but also pause to learn. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q298",
+      "text": "Kindness is a language fear does not speak. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q299",
+      "text": "Strength is often quiet persistence. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    },
+    {
+      "id": "q300",
+      "text": "A boundary is love with a shape. Start with one small step.",
+      "author": "Ulrim",
+      "language": "en",
+      "tags": []
+    }
+  ]
+}

@@ -22,7 +22,7 @@ object AppModule {
             context,
             AppDatabase::class.java,
             "ulrim_database"
-        ).build()
+        ).addMigrations(co.kr.ulrim.data.local.MIGRATION_1_2).build()
     }
 
     @Provides

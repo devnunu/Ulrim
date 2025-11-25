@@ -56,16 +56,19 @@ class UlrimWidget : GlanceAppWidget() {
         val sentenceRepository = entryPoint.sentenceRepository()
         val settingsRepository = entryPoint.settingsRepository()
 
-        // Fetch widget mode
-        val widgetMode = runBlocking { 
-            settingsRepository.userPreferences.first().widgetMode
+        // Fetch widget preferences
+        val userPreferences = runBlocking { 
+            settingsRepository.userPreferences.first()
         }
+        
+        val widgetMode = userPreferences.widgetMode
+        val widgetQuoteSource = userPreferences.widgetQuoteSource
 
-        // Fetch quote based on mode
+        // Fetch quote based on mode and source
         val quote = runBlocking {
             when (widgetMode) {
-                "random" -> sentenceRepository.getRandomSentence().firstOrNull()
-                else -> dailyQuoteManager.getOrUpdateTodayQuote()
+                "random" -> sentenceRepository.getRandomSentenceBySource(widgetQuoteSource).firstOrNull()
+                else -> dailyQuoteManager.getOrUpdateTodayQuote(widgetQuoteSource)
             }
         }
 

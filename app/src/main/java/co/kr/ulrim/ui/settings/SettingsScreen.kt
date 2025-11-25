@@ -112,14 +112,83 @@ fun SettingsScreen(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
+                // Quote Source Section
+                SettingsSectionTitle("Random Quote Source")
+                QuoteSourceSelector(
+                    selectedSource = userPreferences!!.quoteSource,
+                    onSourceSelected = { viewModel.setQuoteSource(it) }
+                )
+
+                Spacer(modifier = Modifier.height(24.dp))
+
                 // Widget Section
-                SettingsSectionTitle("Widget")
+                SettingsSectionTitle("Widget Mode")
                 WidgetModeSelector(
                     selectedMode = userPreferences!!.widgetMode,
                     onModeSelected = { viewModel.setWidgetMode(it) }
                 )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Widget Quote Source Section
+                SettingsSectionTitle("Widget Quote Source")
+                QuoteSourceSelector(
+                    selectedSource = userPreferences!!.widgetQuoteSource,
+                    onSourceSelected = { viewModel.setWidgetQuoteSource(it) }
+                )
             }
         }
+    }
+}
+
+@Composable
+fun QuoteSourceSelector(
+    selectedSource: String,
+    onSourceSelected: (String) -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .background(Color.DarkGray.copy(alpha = 0.5f))
+    ) {
+        QuoteSourceOption(
+            label = "My Quotes Only",
+            isSelected = selectedSource == "local_only",
+            onClick = { onSourceSelected("local_only") }
+        )
+        QuoteSourceOption(
+            label = "Default Quotes Only",
+            isSelected = selectedSource == "remote_only",
+            onClick = { onSourceSelected("remote_only") }
+        )
+        QuoteSourceOption(
+            label = "Both (Random)",
+            isSelected = selectedSource == "both",
+            onClick = { onSourceSelected("both") }
+        )
+    }
+}
+
+@Composable
+fun QuoteSourceOption(
+    label: String,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(vertical = 12.dp, horizontal = 16.dp)
+            .background(if (isSelected) Color.White.copy(alpha = 0.2f) else Color.Transparent, RoundedCornerShape(8.dp))
+    ) {
+        Text(
+            text = label,
+            color = if (isSelected) Color.White else Color.Gray,
+            style = MaterialTheme.typography.bodyMedium
+        )
     }
 }
 
