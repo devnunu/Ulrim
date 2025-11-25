@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "638297871196",
+    "project_id": "ulrim-3d9b5",
+    "storage_bucket": "ulrim-3d9b5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638297871196:android:062c2f6a11c51c234fe799",
+        "android_client_info": {
+          "package_name": "co.kr.ulrim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJfbLt3OZf6jW6bOJ1npeTOx_VbPUavlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
