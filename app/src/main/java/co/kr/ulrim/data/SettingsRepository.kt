@@ -22,7 +22,8 @@ data class UserPreferences(
     val isBackgroundOn: Boolean = true,
     val widgetMode: String = "daily", // "daily" or "random"
     val quoteSource: String = "both", // "local_only", "remote_only", "both"
-    val widgetQuoteSource: String = "both" // "local_only", "remote_only", "both"
+    val widgetQuoteSource: String = "both", // "local_only", "remote_only", "both"
+    val onboardingCompleted: Boolean = false
 )
 
 @Singleton
@@ -41,6 +42,7 @@ class SettingsRepository @Inject constructor(
         val QUOTE_SOURCE = androidx.datastore.preferences.core.stringPreferencesKey("quote_source")
         val WIDGET_QUOTE_SOURCE = androidx.datastore.preferences.core.stringPreferencesKey("widget_quote_source")
         val DEFAULT_QUOTES_VERSION = intPreferencesKey("default_quotes_version")
+        val ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
     }
 
     val userPreferences: Flow<UserPreferences> = dataStore.data
@@ -51,7 +53,8 @@ class SettingsRepository @Inject constructor(
                 isBackgroundOn = preferences[Keys.BACKGROUND_ON] ?: true,
                 widgetMode = preferences[Keys.WIDGET_MODE] ?: "daily",
                 quoteSource = preferences[Keys.QUOTE_SOURCE] ?: "both",
-                widgetQuoteSource = preferences[Keys.WIDGET_QUOTE_SOURCE] ?: "both"
+                widgetQuoteSource = preferences[Keys.WIDGET_QUOTE_SOURCE] ?: "both",
+                onboardingCompleted = preferences[Keys.ONBOARDING_COMPLETED] ?: false
             )
         }
 
@@ -112,6 +115,12 @@ class SettingsRepository @Inject constructor(
         dataStore.edit { preferences ->
             preferences[Keys.TODAY_DATE] = date
             preferences[Keys.TODAY_QUOTE_ID] = quoteId
+        }
+    }
+
+    suspend fun setOnboardingCompleted(completed: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[Keys.ONBOARDING_COMPLETED] = completed
         }
     }
 }

@@ -10,22 +10,27 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import co.kr.ulrim.ui.theme.UlrimColors
 import co.kr.ulrim.ui.theme.UlrimTypography
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
-    onNavigateToMain: () -> Unit
+    onNavigateToMain: () -> Unit,
+    viewModel: SplashViewModel = hiltViewModel()
 ) {
     val rippleAlpha = remember { Animatable(0f) }
     val rippleScale = remember { Animatable(1f) }
     val textAlpha = remember { Animatable(0f) }
+    val shouldShowOnboarding by viewModel.shouldShowOnboarding.collectAsState()
 
     LaunchedEffect(Unit) {
         // Ripple animation
