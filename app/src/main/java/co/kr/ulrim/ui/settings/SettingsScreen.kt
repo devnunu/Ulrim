@@ -217,8 +217,8 @@ fun QuoteSourceOption(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
-            .padding(vertical = 12.dp, horizontal = 16.dp)
             .background(if (isSelected) Color.White.copy(alpha = 0.2f) else Color.Transparent, RoundedCornerShape(8.dp))
+            .padding(vertical = 12.dp, horizontal = 16.dp)
     ) {
         Text(
             text = label,
@@ -293,8 +293,8 @@ fun FontSizeOption(
     Box(
         modifier = Modifier
             .clickable(onClick = onClick)
-            .padding(vertical = 12.dp, horizontal = 16.dp)
             .background(if (isSelected) Color.White.copy(alpha = 0.2f) else Color.Transparent, RoundedCornerShape(8.dp))
+            .padding(vertical = 12.dp, horizontal = 16.dp)
     ) {
         Text(
             text = label,
