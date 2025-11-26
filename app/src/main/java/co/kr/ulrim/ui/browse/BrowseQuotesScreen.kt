@@ -1,5 +1,7 @@
 package co.kr.ulrim.ui.browse
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,7 +18,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -44,15 +45,27 @@ import co.kr.ulrim.ui.theme.UlrimColors
 @Composable
 fun BrowseQuotesScreen(
     onNavigateBack: () -> Unit,
+    onComplete: () -> Unit = {},
     viewModel: BrowseQuotesViewModel = hiltViewModel()
 ) {
     val remoteQuotes by viewModel.remoteQuotes.collectAsState()
-    val savedQuoteIds by viewModel.savedQuoteIds.collectAsState()
+    val selectedQuoteIds by viewModel.selectedQuoteIds.collectAsState()
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Default Quotes", color = Color.White) },
+                title = { 
+                    Column {
+                        Text("Default Quotes", color = Color.White)
+                        if (selectedQuoteIds.isNotEmpty()) {
+                            Text(
+                                "${selectedQuoteIds.size} selected",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = UlrimColors.Accent
+                            )
+                        }
+                    }
+                },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.White)
@@ -62,6 +75,33 @@ fun BrowseQuotesScreen(
                     containerColor = UlrimColors.PrimaryBackground
                 )
             )
+        },
+        bottomBar = {
+            if (selectedQuoteIds.isNotEmpty()) {
+                androidx.compose.material3.Button(
+                    onClick = {
+                        viewModel.saveSelectedQuotes {
+                            onComplete()
+                        }
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                        .height(56.dp),
+                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                        containerColor = UlrimColors.Accent,
+                        contentColor = Color.White
+                    ),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Text(
+                        text = "Save ${selectedQuoteIds.size} Quote${if (selectedQuoteIds.size > 1) "s" else ""}",
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Medium
+                        )
+                    )
+                }
+            }
         },
         containerColor = UlrimColors.PrimaryBackground
     ) { padding ->
@@ -87,10 +127,10 @@ fun BrowseQuotesScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(remoteQuotes) { quote ->
-                    QuoteCard(
+                    SelectableQuoteCard(
                         quote = quote,
-                        isSaved = savedQuoteIds.contains(quote.id),
-                        onSaveClick = { viewModel.saveQuoteToLocal(quote) }
+                        isSelected = selectedQuoteIds.contains(quote.id),
+                        onToggleSelection = { viewModel.toggleQuoteSelection(quote.id) }
                     )
                 }
             }
@@ -99,76 +139,64 @@ fun BrowseQuotesScreen(
 }
 
 @Composable
-fun QuoteCard(
+fun SelectableQuoteCard(
     quote: Sentence,
-    isSaved: Boolean,
-    onSaveClick: () -> Unit
+    isSelected: Boolean,
+    onToggleSelection: () -> Unit
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onToggleSelection() },
         colors = CardDefaults.cardColors(
-            containerColor = UlrimColors.SecondaryBackground
+            containerColor = if (isSelected) 
+                UlrimColors.Accent.copy(alpha = 0.2f) 
+            else 
+                UlrimColors.SecondaryBackground
         ),
-        shape = RoundedCornerShape(12.dp)
+        shape = RoundedCornerShape(12.dp),
+        border = if (isSelected) 
+            BorderStroke(2.dp, UlrimColors.Accent) 
+        else null
     ) {
-        Column(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp),
+            verticalAlignment = Alignment.Top
         ) {
-            // Quote Text
-            Text(
-                text = quote.content,
-                style = MaterialTheme.typography.bodyLarge,
-                color = UlrimColors.TextPrimary,
-                maxLines = 4,
-                overflow = TextOverflow.Ellipsis
-            )
-
-            if (quote.author != null) {
-                Spacer(modifier = Modifier.height(8.dp))
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                // Quote Text
                 Text(
-                    text = "— ${quote.author}",
-                    style = MaterialTheme.typography.bodySmall.copy(
-                        fontStyle = FontStyle.Italic
-                    ),
-                    color = UlrimColors.TextSecondary
+                    text = quote.content,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = UlrimColors.TextPrimary,
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis
                 )
+
+                if (quote.author != null) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "— ${quote.author}",
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            fontStyle = FontStyle.Italic
+                        ),
+                        color = UlrimColors.TextSecondary
+                    )
+                }
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
-
-            // Save Button
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (isSaved) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Check,
-                            contentDescription = "Saved",
-                            tint = UlrimColors.Accent
-                        )
-                        Text(
-                            text = "Saved",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = UlrimColors.Accent,
-                            modifier = Modifier.padding(start = 4.dp)
-                        )
-                    }
-                } else {
-                    IconButton(onClick = onSaveClick) {
-                        Icon(
-                            imageVector = Icons.Default.FavoriteBorder,
-                            contentDescription = "Save to My Quotes",
-                            tint = UlrimColors.Accent
-                        )
-                    }
-                }
+            // Selection indicator
+            if (isSelected) {
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = "Selected",
+                    tint = UlrimColors.Accent,
+                    modifier = Modifier.padding(start = 8.dp)
+                )
             }
         }
     }

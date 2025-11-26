@@ -80,7 +80,12 @@ fun UlrimApp() {
         }
         composable("browse") {
             co.kr.ulrim.ui.browse.BrowseQuotesScreen(
-                onNavigateBack = { navController.popBackStack() }
+                onNavigateBack = { navController.popBackStack() },
+                onComplete = {
+                    navController.navigate("main") {
+                        popUpTo("browse") { inclusive = true }
+                    }
+                }
             )
         }
         composable("main") {

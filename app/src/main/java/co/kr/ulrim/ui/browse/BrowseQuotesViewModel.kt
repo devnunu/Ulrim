@@ -27,23 +27,33 @@ class BrowseQuotesViewModel @Inject constructor(
             initialValue = emptyList()
         )
 
-    private val _savedQuoteIds = MutableStateFlow<Set<Long>>(emptySet())
-    val savedQuoteIds: StateFlow<Set<Long>> = _savedQuoteIds.asStateFlow()
+    private val _selectedQuoteIds = MutableStateFlow<Set<Long>>(emptySet())
+    val selectedQuoteIds: StateFlow<Set<Long>> = _selectedQuoteIds.asStateFlow()
 
-    fun saveQuoteToLocal(quote: Sentence) {
-        viewModelScope.launch {
-            // Create a copy with source = LOCAL
-            val localQuote = quote.copy(
-                id = 0, // Auto-generate new ID
-                source = "LOCAL",
-                createdAt = System.currentTimeMillis()
-            )
-            repository.insert(localQuote)
-            _savedQuoteIds.value = _savedQuoteIds.value + quote.id
+    fun toggleQuoteSelection(quoteId: Long) {
+        _selectedQuoteIds.value = if (_selectedQuoteIds.value.contains(quoteId)) {
+            _selectedQuoteIds.value - quoteId
+        } else {
+            _selectedQuoteIds.value + quoteId
         }
     }
 
-    fun isQuoteSaved(quoteId: Long): Boolean {
-        return _savedQuoteIds.value.contains(quoteId)
+    fun saveSelectedQuotes(onComplete: () -> Unit) {
+        viewModelScope.launch {
+            val selectedQuotes = remoteQuotes.value.filter { 
+                _selectedQuoteIds.value.contains(it.id) 
+            }
+            
+            val localQuotes = selectedQuotes.map { quote ->
+                quote.copy(
+                    id = 0, // Auto-generate new ID
+                    source = "LOCAL",
+                    createdAt = System.currentTimeMillis()
+                )
+            }
+            
+            repository.insertAll(localQuotes)
+            onComplete()
+        }
     }
 }
