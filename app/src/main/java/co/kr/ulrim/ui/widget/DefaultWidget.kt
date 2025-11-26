@@ -32,14 +32,13 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 
-class UlrimWidget : GlanceAppWidget() {
+class DefaultWidget : GlanceAppWidget() {
 
     @EntryPoint
     @InstallIn(SingletonComponent::class)
-    interface UlrimWidgetEntryPoint {
+    interface DefaultWidgetEntryPoint {
         fun dailyQuoteManager(): DailyQuoteManager
         fun sentenceRepository(): SentenceRepository
         fun settingsRepository(): SettingsRepository
@@ -49,35 +48,23 @@ class UlrimWidget : GlanceAppWidget() {
         val appContext = context.applicationContext
         val entryPoint = EntryPointAccessors.fromApplication(
             appContext,
-            UlrimWidgetEntryPoint::class.java
+            DefaultWidgetEntryPoint::class.java
         )
 
         val dailyQuoteManager = entryPoint.dailyQuoteManager()
-        val sentenceRepository = entryPoint.sentenceRepository()
         val settingsRepository = entryPoint.settingsRepository()
 
-        // Fetch widget preferences
-        val userPreferences = runBlocking { 
-            settingsRepository.userPreferences.first()
+        val quoteSource = runBlocking {
+            settingsRepository.userPreferences.first().quoteSource
         }
-        
-        val widgetMode = userPreferences.widgetMode
-        val quoteSource = userPreferences.quoteSource
-        val widgetStyle = userPreferences.widgetStyle
 
-        // Fetch quote based on mode and source
+        // Always use daily quote for default widget
         val quote = runBlocking {
-            when (widgetMode) {
-                "random" -> sentenceRepository.getRandomSentenceBySource(quoteSource).firstOrNull()
-                else -> dailyQuoteManager.getOrUpdateTodayQuote(quoteSource)
-            }
+            dailyQuoteManager.getOrUpdateTodayQuote(quoteSource)
         }
 
         provideContent {
-            when (widgetStyle) {
-                "simple" -> SimpleWidgetContent(quote?.content ?: "Tap to find your principle.")
-                else -> DefaultWidgetContent(quote?.content ?: "Tap to find your principle.")
-            }
+            DefaultWidgetContent(quote?.content ?: "Tap to find your principle.")
         }
     }
 
@@ -86,7 +73,7 @@ class UlrimWidget : GlanceAppWidget() {
         Box(
             modifier = GlanceModifier
                 .fillMaxSize()
-                .background(ColorProvider(Color(0xFF121212))) // Dark background
+                .background(ColorProvider(Color(0xFF121212)))
                 .clickable(actionStartActivity<MainActivity>())
                 .padding(16.dp),
             contentAlignment = Alignment.Center
@@ -120,28 +107,6 @@ class UlrimWidget : GlanceAppWidget() {
                     )
                 )
             }
-        }
-    }
-
-    @Composable
-    private fun SimpleWidgetContent(quoteText: String) {
-        Box(
-            modifier = GlanceModifier
-                .fillMaxSize()
-                .background(ColorProvider(Color.Transparent))
-                .clickable(actionStartActivity<MainActivity>())
-                .padding(16.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = quoteText,
-                style = TextStyle(
-                    color = ColorProvider(Color.White),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Normal
-                ),
-                maxLines = 6
-            )
         }
     }
 }

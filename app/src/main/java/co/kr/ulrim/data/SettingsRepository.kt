@@ -20,9 +20,7 @@ data class UserPreferences(
     val fontSize: Int = 1, // 0: Small, 1: Medium, 2: Large
     val isAnimationOn: Boolean = true,
     val isBackgroundOn: Boolean = true,
-    val widgetMode: String = "daily", // "daily" or "random"
     val quoteSource: String = "both", // "local_only", "remote_only", "both"
-    val widgetStyle: String = "default", // "default" or "simple"
     val onboardingCompleted: Boolean = false
 )
 
@@ -38,9 +36,7 @@ class SettingsRepository @Inject constructor(
         val BACKGROUND_ON = booleanPreferencesKey("background_on")
         val TODAY_DATE = androidx.datastore.preferences.core.stringPreferencesKey("today_date")
         val TODAY_QUOTE_ID = androidx.datastore.preferences.core.longPreferencesKey("today_quote_id")
-        val WIDGET_MODE = androidx.datastore.preferences.core.stringPreferencesKey("widget_mode")
         val QUOTE_SOURCE = androidx.datastore.preferences.core.stringPreferencesKey("quote_source")
-        val WIDGET_STYLE = androidx.datastore.preferences.core.stringPreferencesKey("widget_style")
         val DEFAULT_QUOTES_VERSION = intPreferencesKey("default_quotes_version")
         val ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
     }
@@ -51,9 +47,7 @@ class SettingsRepository @Inject constructor(
                 fontSize = preferences[Keys.FONT_SIZE] ?: 1,
                 isAnimationOn = preferences[Keys.ANIMATION_ON] ?: true,
                 isBackgroundOn = preferences[Keys.BACKGROUND_ON] ?: true,
-                widgetMode = preferences[Keys.WIDGET_MODE] ?: "daily",
                 quoteSource = preferences[Keys.QUOTE_SOURCE] ?: "both",
-                widgetStyle = preferences[Keys.WIDGET_STYLE] ?: "default",
                 onboardingCompleted = preferences[Keys.ONBOARDING_COMPLETED] ?: false
             )
         }
@@ -81,11 +75,7 @@ class SettingsRepository @Inject constructor(
         }
     }
 
-    suspend fun setWidgetMode(mode: String) {
-        dataStore.edit { preferences ->
-            preferences[Keys.WIDGET_MODE] = mode
-        }
-    }
+
 
     suspend fun setQuoteSource(source: String) {
         dataStore.edit { preferences ->
@@ -118,9 +108,5 @@ class SettingsRepository @Inject constructor(
         }
     }
 
-    suspend fun setWidgetStyle(style: String) {
-        dataStore.edit { preferences ->
-            preferences[Keys.WIDGET_STYLE] = style
-        }
-    }
+
 }

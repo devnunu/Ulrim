@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ulrim</string>
+    <string name="default_widget_description">Ulrim - Today\'s Quote (Default Style)</string>
+    <string name="simple_widget_description">Ulrim - Today\'s Quote (Simple Style)</string>
 </resources>

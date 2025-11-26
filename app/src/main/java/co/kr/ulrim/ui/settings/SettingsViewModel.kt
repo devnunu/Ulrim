@@ -5,7 +5,7 @@ import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.kr.ulrim.data.SettingsRepository
-import co.kr.ulrim.ui.widget.UlrimWidget
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.SharingStarted
@@ -44,36 +44,32 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun setWidgetMode(mode: String) {
-        viewModelScope.launch {
-            repository.setWidgetMode(mode)
-            // Trigger Widget Update
-            val glanceId = GlanceAppWidgetManager(context).getGlanceIds(UlrimWidget::class.java).firstOrNull()
-            if (glanceId != null) {
-                UlrimWidget().update(context, glanceId)
-            }
-        }
-    }
-
     fun setQuoteSource(source: String) {
         viewModelScope.launch {
             repository.setQuoteSource(source)
-            // Trigger Widget Update since quote source affects widget too
-            val glanceId = GlanceAppWidgetManager(context).getGlanceIds(UlrimWidget::class.java).firstOrNull()
-            if (glanceId != null) {
-                UlrimWidget().update(context, glanceId)
+            // Trigger Widget Update for both widgets
+            val manager = GlanceAppWidgetManager(context)
+            
+            // Update DefaultWidget
+            val defaultWidgetIds = manager.getGlanceIds(co.kr.ulrim.ui.widget.DefaultWidget::class.java)
+            defaultWidgetIds.forEach { glanceId ->
+                co.kr.ulrim.ui.widget.DefaultWidget().update(context, glanceId)
+            }
+
+            // Update SimpleWidget
+            val simpleWidgetIds = manager.getGlanceIds(co.kr.ulrim.ui.widget.SimpleWidget::class.java)
+            simpleWidgetIds.forEach { glanceId ->
+                co.kr.ulrim.ui.widget.SimpleWidget().update(context, glanceId)
             }
         }
     }
 
-    fun setWidgetStyle(style: String) {
-        viewModelScope.launch {
-            repository.setWidgetStyle(style)
-            // Trigger Widget Update
-            val glanceId = GlanceAppWidgetManager(context).getGlanceIds(UlrimWidget::class.java).firstOrNull()
-            if (glanceId != null) {
-                UlrimWidget().update(context, glanceId)
-            }
+    fun requestPinWidget(widgetClass: Class<*>) {
+        val appWidgetManager = android.appwidget.AppWidgetManager.getInstance(context)
+        val myProvider = android.content.ComponentName(context, widgetClass)
+
+        if (appWidgetManager.isRequestPinAppWidgetSupported) {
+            appWidgetManager.requestPinAppWidget(myProvider, null, null)
         }
     }
 }

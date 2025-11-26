@@ -13,7 +13,7 @@ import co.kr.ulrim.data.local.Background
 import co.kr.ulrim.data.local.Backgrounds
 import co.kr.ulrim.data.local.Sentence
 import co.kr.ulrim.domain.DailyQuoteManager
-import co.kr.ulrim.ui.widget.UlrimWidget
+
 import co.kr.ulrim.util.ShareCardGenerator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -66,10 +66,19 @@ class MainViewModel @Inject constructor(
     private fun checkAndUpdateTodayQuote() {
         viewModelScope.launch {
             dailyQuoteManager.getOrUpdateTodayQuote()
-            // Update Widget
-            val glanceId = GlanceAppWidgetManager(context).getGlanceIds(UlrimWidget::class.java).firstOrNull()
-            if (glanceId != null) {
-                UlrimWidget().update(context, glanceId)
+            // Update Widgets
+            val manager = GlanceAppWidgetManager(context)
+            
+            // Update DefaultWidget
+            val defaultWidgetIds = manager.getGlanceIds(co.kr.ulrim.ui.widget.DefaultWidget::class.java)
+            defaultWidgetIds.forEach { glanceId ->
+                co.kr.ulrim.ui.widget.DefaultWidget().update(context, glanceId)
+            }
+
+            // Update SimpleWidget
+            val simpleWidgetIds = manager.getGlanceIds(co.kr.ulrim.ui.widget.SimpleWidget::class.java)
+            simpleWidgetIds.forEach { glanceId ->
+                co.kr.ulrim.ui.widget.SimpleWidget().update(context, glanceId)
             }
         }
     }
