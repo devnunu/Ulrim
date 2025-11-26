@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
     private val _currentSentence = MutableStateFlow<Sentence?>(null)
     val currentSentence: StateFlow<Sentence?> = _currentSentence.asStateFlow()
 
-    private val _currentBackground = MutableStateFlow<Background>(Backgrounds.list.random())
+    private val _currentBackground = MutableStateFlow<Background>(Background(Backgrounds.getRandomBackgroundUrl()))
     val currentBackground: StateFlow<Background> = _currentBackground.asStateFlow()
 
     val userPreferences = settingsRepository.userPreferences
@@ -59,7 +59,7 @@ class MainViewModel @Inject constructor(
              val sourceFilter = userPreferences.value?.quoteSource ?: "both"
              val sentence = repository.getRandomSentenceBySource(sourceFilter).first()
              _currentSentence.value = sentence
-             _currentBackground.value = Backgrounds.list.random()
+             _currentBackground.value = Background(Backgrounds.getRandomBackgroundUrl())
         }
     }
 
@@ -97,32 +97,44 @@ class MainViewModel @Inject constructor(
     fun shareAsImage() {
         viewModelScope.launch {
             val sentence = _currentSentence.value?.content ?: return@launch
-            val backgroundResId = _currentBackground.value.resourceId
+            val backgroundUrl = _currentBackground.value.imageUrl
 
-            // Generate card bitmap
-            val bitmap = ShareCardGenerator.generateQuoteCard(context, sentence, backgroundResId)
+            // Load image bitmap using Coil
+            val loader = coil.ImageLoader(context)
+            val request = coil.request.ImageRequest.Builder(context)
+                .data(backgroundUrl)
+                .allowHardware(false) // Disable hardware bitmaps for canvas drawing
+                .build()
+            
+            val result = (loader.execute(request) as? coil.request.SuccessResult)?.drawable
+            val backgroundBitmap = (result as? android.graphics.drawable.BitmapDrawable)?.bitmap
 
-            // Save to cache and share
-            try {
-                val cachePath = File(context.cacheDir, "images")
-                cachePath.mkdirs()
-                val file = File(cachePath, "quote_card.png")
-                val stream = FileOutputStream(file)
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-                stream.close()
+            if (backgroundBitmap != null) {
+                // Generate card bitmap with loaded background
+                val bitmap = ShareCardGenerator.generateQuoteCard(context, sentence, backgroundBitmap)
 
-                val contentUri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+                // Save to cache and share
+                try {
+                    val cachePath = File(context.cacheDir, "images")
+                    cachePath.mkdirs()
+                    val file = File(cachePath, "quote_card.png")
+                    val stream = FileOutputStream(file)
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+                    stream.close()
 
-                val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                    type = "image/png"
-                    putExtra(Intent.EXTRA_STREAM, contentUri)
-                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    val contentUri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+
+                    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                        type = "image/png"
+                        putExtra(Intent.EXTRA_STREAM, contentUri)
+                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    }
+                    val chooserIntent = Intent.createChooser(shareIntent, "Share Quote Card")
+                    chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context.startActivity(chooserIntent)
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
-                val chooserIntent = Intent.createChooser(shareIntent, "Share Quote Card")
-                chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                context.startActivity(chooserIntent)
-            } catch (e: Exception) {
-                e.printStackTrace()
             }
         }
     }

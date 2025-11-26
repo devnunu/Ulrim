@@ -6,14 +6,13 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
-import androidx.core.content.res.ResourcesCompat
 
 object ShareCardGenerator {
 
     fun generateQuoteCard(
         context: Context,
         quoteText: String,
-        backgroundResId: Int
+        backgroundBitmap: Bitmap
     ): Bitmap {
         val width = 1080
         val height = 1920
@@ -21,10 +20,10 @@ object ShareCardGenerator {
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
 
-        // Draw background image
-        val backgroundDrawable = ResourcesCompat.getDrawable(context.resources, backgroundResId, null)
-        backgroundDrawable?.setBounds(0, 0, width, height)
-        backgroundDrawable?.draw(canvas)
+        // Draw background bitmap (scaled to fill)
+        val srcRect = android.graphics.Rect(0, 0, backgroundBitmap.width, backgroundBitmap.height)
+        val dstRect = android.graphics.Rect(0, 0, width, height)
+        canvas.drawBitmap(backgroundBitmap, srcRect, dstRect, null)
 
         // Draw overlay
         val overlayPaint = Paint().apply {
