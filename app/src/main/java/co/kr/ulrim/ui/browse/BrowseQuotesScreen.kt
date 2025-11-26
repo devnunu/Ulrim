@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -34,7 +33,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -78,28 +76,34 @@ fun BrowseQuotesScreen(
         },
         bottomBar = {
             if (selectedQuoteIds.isNotEmpty()) {
-                androidx.compose.material3.Button(
-                    onClick = {
-                        viewModel.saveSelectedQuotes {
-                            onComplete()
-                        }
-                    },
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp)
-                        .height(56.dp),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = UlrimColors.Accent,
-                        contentColor = Color.White
-                    ),
-                    shape = RoundedCornerShape(12.dp)
+                        .padding(bottom = 24.dp)
                 ) {
-                    Text(
-                        text = "Save ${selectedQuoteIds.size} Quote${if (selectedQuoteIds.size > 1) "s" else ""}",
-                        style = MaterialTheme.typography.bodyLarge.copy(
-                            fontWeight = androidx.compose.ui.text.font.FontWeight.Medium
+                    androidx.compose.material3.Button(
+                        onClick = {
+                            viewModel.saveSelectedQuotes {
+                                onComplete()
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
+                            .height(56.dp),
+                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                            containerColor = UlrimColors.Accent,
+                            contentColor = Color.White
+                        ),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        Text(
+                            text = "Save ${selectedQuoteIds.size} Quote${if (selectedQuoteIds.size > 1) "s" else ""}",
+                            style = MaterialTheme.typography.bodyLarge.copy(
+                                fontWeight = androidx.compose.ui.text.font.FontWeight.Medium
+                            )
                         )
-                    )
+                    }
                 }
             }
         },
@@ -176,17 +180,6 @@ fun SelectableQuoteCard(
                     maxLines = 4,
                     overflow = TextOverflow.Ellipsis
                 )
-
-                if (quote.author != null) {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = "— ${quote.author}",
-                        style = MaterialTheme.typography.bodySmall.copy(
-                            fontStyle = FontStyle.Italic
-                        ),
-                        color = UlrimColors.TextSecondary
-                    )
-                }
             }
 
             // Selection indicator
