@@ -5,8 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -31,6 +36,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun UlrimApp() {
     val navController = rememberNavController()
+    val view = LocalView.current
+
+    SideEffect {
+        val window = (view.context as android.app.Activity).window
+        window.statusBarColor = Color.Black.toArgb()
+        WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
+    }
 
     NavHost(navController = navController, startDestination = "splash") {
         composable("splash") {
