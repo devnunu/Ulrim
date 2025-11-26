@@ -62,23 +62,27 @@ class UlrimWidget : GlanceAppWidget() {
         }
         
         val widgetMode = userPreferences.widgetMode
-        val widgetQuoteSource = userPreferences.widgetQuoteSource
+        val quoteSource = userPreferences.quoteSource
+        val widgetStyle = userPreferences.widgetStyle
 
         // Fetch quote based on mode and source
         val quote = runBlocking {
             when (widgetMode) {
-                "random" -> sentenceRepository.getRandomSentenceBySource(widgetQuoteSource).firstOrNull()
-                else -> dailyQuoteManager.getOrUpdateTodayQuote(widgetQuoteSource)
+                "random" -> sentenceRepository.getRandomSentenceBySource(quoteSource).firstOrNull()
+                else -> dailyQuoteManager.getOrUpdateTodayQuote(quoteSource)
             }
         }
 
         provideContent {
-            UlrimWidgetContent(quote?.content ?: "Tap to find your principle.")
+            when (widgetStyle) {
+                "simple" -> SimpleWidgetContent(quote?.content ?: "Tap to find your principle.")
+                else -> DefaultWidgetContent(quote?.content ?: "Tap to find your principle.")
+            }
         }
     }
 
     @Composable
-    private fun UlrimWidgetContent(quoteText: String) {
+    private fun DefaultWidgetContent(quoteText: String) {
         Box(
             modifier = GlanceModifier
                 .fillMaxSize()
@@ -116,6 +120,28 @@ class UlrimWidget : GlanceAppWidget() {
                     )
                 )
             }
+        }
+    }
+
+    @Composable
+    private fun SimpleWidgetContent(quoteText: String) {
+        Box(
+            modifier = GlanceModifier
+                .fillMaxSize()
+                .background(ColorProvider(Color.Transparent))
+                .clickable(actionStartActivity<MainActivity>())
+                .padding(16.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = quoteText,
+                style = TextStyle(
+                    color = ColorProvider(Color.White),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                maxLines = 6
+            )
         }
     }
 }

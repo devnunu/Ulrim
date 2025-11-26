@@ -58,12 +58,17 @@ class SettingsViewModel @Inject constructor(
     fun setQuoteSource(source: String) {
         viewModelScope.launch {
             repository.setQuoteSource(source)
+            // Trigger Widget Update since quote source affects widget too
+            val glanceId = GlanceAppWidgetManager(context).getGlanceIds(UlrimWidget::class.java).firstOrNull()
+            if (glanceId != null) {
+                UlrimWidget().update(context, glanceId)
+            }
         }
     }
 
-    fun setWidgetQuoteSource(source: String) {
+    fun setWidgetStyle(style: String) {
         viewModelScope.launch {
-            repository.setWidgetQuoteSource(source)
+            repository.setWidgetStyle(style)
             // Trigger Widget Update
             val glanceId = GlanceAppWidgetManager(context).getGlanceIds(UlrimWidget::class.java).firstOrNull()
             if (glanceId != null) {

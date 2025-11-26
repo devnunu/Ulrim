@@ -112,8 +112,8 @@ fun SettingsScreen(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Quote Source Section
-                SettingsSectionTitle("Random Quote Source")
+                // Quote Source Section (applies to both app and widget)
+                SettingsSectionTitle("Quote Source")
                 QuoteSourceSelector(
                     selectedSource = userPreferences!!.quoteSource,
                     onSourceSelected = { viewModel.setQuoteSource(it) }
@@ -130,14 +130,60 @@ fun SettingsScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Widget Quote Source Section
-                SettingsSectionTitle("Widget Quote Source")
-                QuoteSourceSelector(
-                    selectedSource = userPreferences!!.widgetQuoteSource,
-                    onSourceSelected = { viewModel.setWidgetQuoteSource(it) }
+                // Widget Style Section
+                SettingsSectionTitle("Widget Style")
+                WidgetStyleSelector(
+                    selectedStyle = userPreferences!!.widgetStyle,
+                    onStyleSelected = { viewModel.setWidgetStyle(it) }
                 )
             }
         }
+    }
+}
+
+@Composable
+fun WidgetStyleSelector(
+    selectedStyle: String,
+    onStyleSelected: (String) -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .background(Color.DarkGray.copy(alpha = 0.5f)),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        WidgetStyleOption(
+            label = "Default",
+            isSelected = selectedStyle == "default",
+            onClick = { onStyleSelected("default") }
+        )
+        WidgetStyleOption(
+            label = "Simple",
+            isSelected = selectedStyle == "simple",
+            onClick = { onStyleSelected("simple") }
+        )
+    }
+}
+
+@Composable
+fun WidgetStyleOption(
+    label: String,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .clickable(onClick = onClick)
+            .padding(vertical = 12.dp, horizontal = 16.dp)
+            .background(if (isSelected) Color.White.copy(alpha = 0.2f) else Color.Transparent, RoundedCornerShape(8.dp))
+    ) {
+        Text(
+            text = label,
+            color = if (isSelected) Color.White else Color.Gray,
+            style = MaterialTheme.typography.bodyMedium
+        )
     }
 }
 
