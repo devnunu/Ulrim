@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
@@ -37,6 +38,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -218,18 +220,22 @@ fun MainScreen(
             )
         }
 
-        // Add Button (Subtle)
-        IconButton(
-            onClick = onNavigateToAdd,
+        // Add Button (Subtle Floating Action Button)
+        Box(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(24.dp)
+                .size(56.dp)
+                .clip(CircleShape)
+                .background(Color.Black.copy(alpha = 0.3f))
+                .clickable { onNavigateToAdd() },
+            contentAlignment = Alignment.Center
         ) {
             Icon(
                 imageVector = Icons.Default.Add,
                 contentDescription = "Add Sentence",
-                tint = Color.White.copy(alpha = 0.5f),
-                modifier = Modifier.size(24.dp)
+                tint = Color.White.copy(alpha = 0.9f),
+                modifier = Modifier.size(28.dp)
             )
         }
     }
