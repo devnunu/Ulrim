@@ -24,6 +24,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
+    onNavigateToOnboarding: () -> Unit,
     onNavigateToMain: () -> Unit,
     viewModel: SplashViewModel = hiltViewModel()
 ) {
@@ -32,7 +33,7 @@ fun SplashScreen(
     val textAlpha = remember { Animatable(0f) }
     val shouldShowOnboarding by viewModel.shouldShowOnboarding.collectAsState()
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(shouldShowOnboarding) {
         // Ripple animation
         rippleAlpha.animateTo(
             targetValue = 0.4f,
@@ -42,17 +43,21 @@ fun SplashScreen(
             targetValue = 1.05f,
             animationSpec = tween(durationMillis = 400)
         )
-        
+
         // Text animation (delayed)
         delay(100)
         textAlpha.animateTo(
             targetValue = 0.9f,
             animationSpec = tween(durationMillis = 300)
         )
-        
-        // Wait and navigate
+
+        // Wait and navigate based on onboarding status
         delay(100)
-        onNavigateToMain()
+        if (shouldShowOnboarding) {
+            onNavigateToOnboarding()
+        } else {
+            onNavigateToMain()
+        }
     }
 
     Box(

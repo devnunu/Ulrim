@@ -6,8 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
@@ -16,7 +14,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import co.kr.ulrim.ui.add.AddSentenceScreen
+import co.kr.ulrim.ui.browse.BrowseQuotesScreen
+import co.kr.ulrim.ui.detail.SentenceDetailScreen
+import co.kr.ulrim.ui.list.SentenceListScreen
 import co.kr.ulrim.ui.main.MainScreen
+import co.kr.ulrim.ui.onboarding.OnboardingScreen
+import co.kr.ulrim.ui.settings.SettingsScreen
+import co.kr.ulrim.ui.splash.SplashScreen
 import co.kr.ulrim.ui.theme.UlrimTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,35 +50,21 @@ fun UlrimApp() {
 
     NavHost(navController = navController, startDestination = "splash") {
         composable("splash") {
-            co.kr.ulrim.ui.splash.SplashScreen(
+            SplashScreen(
+                onNavigateToOnboarding = {
+                    navController.navigate("onboarding") {
+                        popUpTo("splash") { inclusive = true }
+                    }
+                },
                 onNavigateToMain = {
-                    // Navigation will be handled by the composable itself
-                    // For now, always go to onboarding - we'll fix this
-                    navController.navigate("check_onboarding") {
+                    navController.navigate("main") {
                         popUpTo("splash") { inclusive = true }
                     }
                 }
             )
         }
-        composable("check_onboarding") {
-            // This is a helper composable to check onboarding status
-            val viewModel: co.kr.ulrim.ui.splash.SplashViewModel = androidx.hilt.navigation.compose.hiltViewModel()
-            val shouldShowOnboarding by viewModel.shouldShowOnboarding.collectAsState()
-            
-            androidx.compose.runtime.LaunchedEffect(shouldShowOnboarding) {
-                if (shouldShowOnboarding) {
-                    navController.navigate("onboarding") {
-                        popUpTo("check_onboarding") { inclusive = true }
-                    }
-                } else {
-                    navController.navigate("main") {
-                        popUpTo("check_onboarding") { inclusive = true }
-                    }
-                }
-            }
-        }
         composable("onboarding") {
-            co.kr.ulrim.ui.onboarding.OnboardingScreen(
+            OnboardingScreen(
                 onNavigateToAdd = {
                     navController.navigate("add") {
                         popUpTo("onboarding") { inclusive = true }
@@ -91,7 +81,7 @@ fun UlrimApp() {
             )
         }
         composable("browse") {
-            co.kr.ulrim.ui.browse.BrowseQuotesScreen(
+            BrowseQuotesScreen(
                 onNavigateBack = { navController.popBackStack() },
                 onComplete = {
                     navController.navigate("main") {
@@ -108,7 +98,7 @@ fun UlrimApp() {
             )
         }
         composable("settings") {
-            co.kr.ulrim.ui.settings.SettingsScreen(
+            SettingsScreen(
                 onNavigateBack = { navController.popBackStack() }
             )
         }
@@ -118,7 +108,7 @@ fun UlrimApp() {
             )
         }
         composable("list") {
-            co.kr.ulrim.ui.list.SentenceListScreen(
+            SentenceListScreen(
                 onNavigateBack = { navController.popBackStack() },
                 onNavigateToDetail = { sentenceId ->
                     navController.navigate("detail/$sentenceId")
@@ -129,7 +119,7 @@ fun UlrimApp() {
             route = "detail/{sentenceId}",
             arguments = listOf(androidx.navigation.navArgument("sentenceId") { type = androidx.navigation.NavType.LongType })
         ) {
-            co.kr.ulrim.ui.detail.SentenceDetailScreen(
+            SentenceDetailScreen(
                 onNavigateBack = { navController.popBackStack() }
             )
         }

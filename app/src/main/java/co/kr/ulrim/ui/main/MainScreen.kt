@@ -1,5 +1,8 @@
 package co.kr.ulrim.ui.main
 
+import android.app.Activity
+import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -32,6 +35,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -55,9 +59,25 @@ fun MainScreen(
     onNavigateToSettings: () -> Unit,
     viewModel: MainViewModel = hiltViewModel()
 ) {
+    val context = LocalContext.current
     val currentBackground by viewModel.currentBackground.collectAsState()
     val currentSentence by viewModel.currentSentence.collectAsState()
     val userPreferences by viewModel.userPreferences.collectAsState()
+
+    // Back press handling
+    var backPressedTime by remember { mutableLongStateOf(0L) }
+
+    BackHandler {
+        val currentTime = System.currentTimeMillis()
+        if (currentTime - backPressedTime < 2000) {
+            // Second back press within 2 seconds - exit app
+            (context as? Activity)?.finish()
+        } else {
+            // First back press - show toast
+            backPressedTime = currentTime
+            Toast.makeText(context, "한 번 더 누르면 종료됩니다", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     // Default values if preferences are not yet loaded
     val fontSizeScale = when (userPreferences?.fontSize) {
