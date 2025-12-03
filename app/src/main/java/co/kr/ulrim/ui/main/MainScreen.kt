@@ -70,6 +70,7 @@ fun MainScreen(
 
     // Back press handling
     var backPressedTime by remember { mutableLongStateOf(0L) }
+    var showShareDialog by remember { mutableStateOf(false) }
 
     BackHandler {
         val currentTime = System.currentTimeMillis()
@@ -208,39 +209,46 @@ fun MainScreen(
             }
         }
 
-
-        // Settings Button
-        IconButton(
-            onClick = onNavigateToSettings,
+        // Top Action Bar
+        androidx.compose.foundation.layout.Row(
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .padding(24.dp)
-                .padding(top = 24.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .padding(top = 8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Icon(
-                imageVector = Icons.Default.Settings,
-                contentDescription = "Settings",
-                tint = Color.White.copy(alpha = 0.7f),
-                modifier = Modifier.size(24.dp)
-            )
+            // Left side: Settings and Share
+            androidx.compose.foundation.layout.Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                IconButton(onClick = onNavigateToSettings) {
+                    Icon(
+                        imageVector = Icons.Default.Settings,
+                        contentDescription = "Settings",
+                        tint = Color.White.copy(alpha = 0.7f)
+                    )
+                }
+                IconButton(onClick = { showShareDialog = true }) {
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        contentDescription = "Share",
+                        tint = Color.White.copy(alpha = 0.7f)
+                    )
+                }
+            }
+
+            // Right side: List
+            IconButton(onClick = onNavigateToList) {
+                Icon(
+                    imageVector = Icons.Default.List,
+                    contentDescription = "List",
+                    tint = Color.White.copy(alpha = 0.7f)
+                )
+            }
         }
 
-        // Share Button
-        var showShareDialog by remember { mutableStateOf(false) }
-        IconButton(
-            onClick = { showShareDialog = true },
-            modifier = Modifier
-                .align(Alignment.TopStart)
-                .padding(start = 72.dp, top = 48.dp)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Share,
-                contentDescription = "Share",
-                tint = Color.White.copy(alpha = 0.7f),
-                modifier = Modifier.size(24.dp)
-            )
-        }
-
+        // Share Dialog
         if (showShareDialog) {
             ShareActionSheet(
                 onDismiss = { showShareDialog = false },
@@ -252,22 +260,6 @@ fun MainScreen(
                     viewModel.shareAsImage()
                     showShareDialog = false
                 }
-            )
-        }
-
-        // List Button
-        IconButton(
-            onClick = onNavigateToList,
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(24.dp)
-                .padding(top = 24.dp) // Extra padding for status bar
-        ) {
-            Icon(
-                imageVector = Icons.Default.List,
-                contentDescription = "List",
-                tint = Color.White.copy(alpha = 0.7f),
-                modifier = Modifier.size(24.dp)
             )
         }
 
