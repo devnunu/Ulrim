@@ -53,12 +53,24 @@ class MainViewModel @Inject constructor(
         loadRandomSentence()
         checkAndUpdateTodayQuote()
 
-        // Automatically load a quote when sentences are added
+        // Automatically update when sentences are added or deleted
         viewModelScope.launch {
             repository.allSentences.collect { sentences ->
-                // If we have no current sentence but sentences exist, load one
-                if (_currentSentence.value == null && sentences.isNotEmpty()) {
-                    loadRandomSentence()
+                val currentSentenceId = _currentSentence.value?.id
+
+                when {
+                    // No sentences available - clear current sentence
+                    sentences.isEmpty() -> {
+                        _currentSentence.value = null
+                    }
+                    // Current sentence was deleted - load a new one
+                    currentSentenceId != null && sentences.none { it.id == currentSentenceId } -> {
+                        loadRandomSentence()
+                    }
+                    // No current sentence but sentences exist - load one
+                    _currentSentence.value == null && sentences.isNotEmpty() -> {
+                        loadRandomSentence()
+                    }
                 }
             }
         }

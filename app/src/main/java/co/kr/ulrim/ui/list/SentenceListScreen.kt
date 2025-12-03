@@ -61,7 +61,10 @@ fun SentenceListScreen(
                 .padding(padding),
             contentPadding = PaddingValues(16.dp)
         ) {
-            items(sentences) { sentence ->
+            items(
+                items = sentences,
+                key = { it.id }
+            ) { sentence ->
                 SentenceItem(
                     sentence = sentence,
                     onClick = { onNavigateToDetail(sentence.id) }

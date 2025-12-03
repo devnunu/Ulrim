@@ -8,11 +8,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SentenceListViewModel @Inject constructor(
-    repository: SentenceRepository
+    private val repository: SentenceRepository
 ) : ViewModel() {
 
     val sentences: StateFlow<List<Sentence>> = repository.allSentences
@@ -21,4 +22,10 @@ class SentenceListViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = emptyList()
         )
+
+    fun deleteSentence(sentence: Sentence) {
+        viewModelScope.launch {
+            repository.delete(sentence)
+        }
+    }
 }
