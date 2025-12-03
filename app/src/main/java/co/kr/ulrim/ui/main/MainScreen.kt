@@ -75,7 +75,7 @@ fun MainScreen(
         } else {
             // First back press - show toast
             backPressedTime = currentTime
-            Toast.makeText(context, "한 번 더 누르면 종료됩니다", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Press back again to exit", Toast.LENGTH_SHORT).show()
         }
     }
 

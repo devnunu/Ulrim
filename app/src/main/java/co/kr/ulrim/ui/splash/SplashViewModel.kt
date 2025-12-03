@@ -18,7 +18,7 @@ class SplashViewModel @Inject constructor(
         .map { !it.onboardingCompleted }
         .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
+            started = SharingStarted.Eagerly,
             initialValue = true
         )
 }

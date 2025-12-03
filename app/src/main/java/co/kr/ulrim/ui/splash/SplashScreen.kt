@@ -33,7 +33,7 @@ fun SplashScreen(
     val textAlpha = remember { Animatable(0f) }
     val shouldShowOnboarding by viewModel.shouldShowOnboarding.collectAsState()
 
-    LaunchedEffect(shouldShowOnboarding) {
+    LaunchedEffect(Unit) {
         // Ripple animation
         rippleAlpha.animateTo(
             targetValue = 0.4f,
@@ -51,7 +51,7 @@ fun SplashScreen(
             animationSpec = tween(durationMillis = 300)
         )
 
-        // Wait and navigate based on onboarding status
+        // Wait for preferences to load and navigate based on onboarding status
         delay(100)
         if (shouldShowOnboarding) {
             onNavigateToOnboarding()
