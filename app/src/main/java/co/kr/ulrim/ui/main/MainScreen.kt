@@ -15,10 +15,13 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -27,6 +30,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -96,47 +100,60 @@ fun MainScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .clickable {
-                    viewModel.loadRandomSentence()
-                }
-        ) {
-            // Background Image
-            AnimatedContent(
-                targetState = currentBackground,
-                transitionSpec = {
-                    if (isAnimationOn) {
-                        (fadeIn(animationSpec = tween(1000))).togetherWith(fadeOut(animationSpec = tween(1000)))
+                .then(
+                    if (currentSentence != null) {
+                        Modifier.clickable { viewModel.loadRandomSentence() }
                     } else {
-                        EnterTransition.None togetherWith ExitTransition.None
+                        Modifier
                     }
-                },
-                label = "BackgroundAnimation"
-            ) { background ->
+                )
+        ) {
+            // Background Image (only show when there are quotes)
+            if (currentSentence != null) {
+                AnimatedContent(
+                    targetState = currentBackground,
+                    transitionSpec = {
+                        if (isAnimationOn) {
+                            (fadeIn(animationSpec = tween(1000))).togetherWith(fadeOut(animationSpec = tween(1000)))
+                        } else {
+                            EnterTransition.None togetherWith ExitTransition.None
+                        }
+                    },
+                    label = "BackgroundAnimation"
+                ) { background ->
+                    if (isBackgroundOn) {
+                        AsyncImage(
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(background.imageUrl)
+                                .crossfade(true)
+                                .build(),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop
+                        )
+                    } else {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(Color(0xFF121212)) // Dark solid color
+                        )
+                    }
+                }
+
+                // Overlay (Only if background is on)
                 if (isBackgroundOn) {
-                    AsyncImage(
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(background.imageUrl)
-                            .crossfade(true)
-                            .build(),
-                        contentDescription = null,
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop
-                    )
-                } else {
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(Color(0xFF121212)) // Dark solid color
+                            .background(Color.Black.copy(alpha = 0.4f))
                     )
                 }
-            }
-
-            // Overlay (Only if background is on)
-            if (isBackgroundOn) {
+            } else {
+                // Black background when no quotes
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.Black.copy(alpha = 0.4f))
+                        .background(Color.Black)
                 )
             }
 
@@ -169,14 +186,24 @@ fun MainScreen(
                             textAlign = TextAlign.Center
                         )
                     } else {
-                        Text(
-                            text = "Tap to find your principle.\nOr add a new one.",
-                            style = MaterialTheme.typography.titleLarge.copy(
-                                fontSize = MaterialTheme.typography.titleLarge.fontSize * fontSizeScale
-                            ),
-                            color = Color.White.copy(alpha = 0.7f),
-                            textAlign = TextAlign.Center
-                        )
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "No quotes yet.",
+                                style = MaterialTheme.typography.titleLarge,
+                                color = Color.White.copy(alpha = 0.9f),
+                                textAlign = TextAlign.Center
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(
+                                text = "Tap the + button below to add one.",
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = Color.White.copy(alpha = 0.6f),
+                                textAlign = TextAlign.Center
+                            )
+                        }
                     }
             }
         }
@@ -272,7 +299,7 @@ fun ShareActionSheet(
     onShareText: () -> Unit,
     onShareImage: () -> Unit
 ) {
-    androidx.compose.material3.AlertDialog(
+    AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("Share Quote", color = Color.White) },
         text = {

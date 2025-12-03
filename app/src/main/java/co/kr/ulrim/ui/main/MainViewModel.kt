@@ -52,6 +52,16 @@ class MainViewModel @Inject constructor(
     init {
         loadRandomSentence()
         checkAndUpdateTodayQuote()
+
+        // Automatically load a quote when sentences are added
+        viewModelScope.launch {
+            repository.allSentences.collect { sentences ->
+                // If we have no current sentence but sentences exist, load one
+                if (_currentSentence.value == null && sentences.isNotEmpty()) {
+                    loadRandomSentence()
+                }
+            }
+        }
     }
 
     fun loadRandomSentence() {

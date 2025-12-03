@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.kr.ulrim.data.SentenceRepository
 import co.kr.ulrim.data.local.Sentence
+import co.kr.ulrim.domain.QuotesSyncManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BrowseQuotesViewModel @Inject constructor(
-    private val repository: SentenceRepository
+    private val repository: SentenceRepository,
+    private val quotesSyncManager: QuotesSyncManager
 ) : ViewModel() {
 
     val remoteQuotes: StateFlow<List<Sentence>> = repository.allSentences
@@ -29,6 +31,13 @@ class BrowseQuotesViewModel @Inject constructor(
 
     private val _selectedQuoteIds = MutableStateFlow<Set<Long>>(emptySet())
     val selectedQuoteIds: StateFlow<Set<Long>> = _selectedQuoteIds.asStateFlow()
+
+    init {
+        // Sync default quotes when this screen is opened
+        viewModelScope.launch {
+            quotesSyncManager.syncDefaultQuotes()
+        }
+    }
 
     fun toggleQuoteSelection(quoteId: Long) {
         _selectedQuoteIds.value = if (_selectedQuoteIds.value.contains(quoteId)) {
